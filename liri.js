@@ -3,7 +3,7 @@ var fs = require("fs"); //reads and writes files
 var keys = require("./keys.js");
 var request = require("request");
 var twitter = require("twitter");
-var spotify = require("spotify");
+var spotify = require("node-spotify-api");
 
 var twitKeys = keys.twitterKeys;
 var creds = keys.spotifyCreds;
@@ -70,7 +70,7 @@ function myTweets() {
 };
 
 function querySong(track) {
-    var spotify = new spotify(creds);
+    var spotifyThisSong = new spotify(creds);
     spotify.search({type: 'track', query: track, limit: '1'}, function(err, data){
 		if (err){
 			console.log("Oops, an error occured! Error: " + error);
